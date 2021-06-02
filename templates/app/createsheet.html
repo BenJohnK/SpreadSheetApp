@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    body{
+        background-color: #EFF1F4
+    }
+    input{
+        margin-bottom: 10px;
+    }
+</style>
+<h1 style="margin-top: 40px;text-align: center;">SpreadSheets</h1>
+<div style="width: 40%;margin: auto;margin-top: 40px;">
+    <div class="card card-body">
+        <form method="POST" action="" style="text-align: center;">{% csrf_token %}
+            {{form.name.errors}}
+            {{form.name}}
+            {{form.rows.errors}}
+            {{form.rows}}
+            {{form.colomns.errors}}
+            {{form.colomns}}
+            <input type="submit" value="Create" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    body{
+        background-color: #EFF1F4
+    }
+</style>
+{% if has_sheet %}
+<div class="card card-body" style="text-align: center;margin-top: 10px;margin-left: 10px;margin-right:10px;">
+    <h3>Sheet: {{sheet.name}}</h3><br>
+    <div id="demo">
+    </div>
+    <a href="{% url 'updatesheet' %}" class="btn btn-warning" style="width: 15%;margin: auto;">Add row/colomns</a><br>
+    <button class="btn btn-primary" style="width: 10%;margin: auto;" onclick="expo()">Export Sheet</button>
+</div>
+{% else %}
+<!-- else part -->
+<div class="card card-body" style="text-align: center;margin-top: 10px;margin-left: 10px;margin-right:10px;">
+    <h1 style="margin-bottom:200px;">Welcome to SpreadSheets</h1>
+    <a href="{% url 'createsheet' %}" class="btn btn-primary" style="width: 30%;margin: auto;">Create Sheet</a>
+</div>
+{% endif %}
+<script>
+if('{{has_sheet}}'){
+var row='{{sheet.rows}}'
+var col='{{sheet.colomns}}'
+element=[]
+col_arr=[]
+var data=[]
+for(let i=0;i<col;i++){
+  col_arr.push(element)
+}
+for(let i=0;i<row;i++){
+  data.push(col_arr)
+}
+jexcel(document.getElementById('demo'), {
+      data:data,
+      // onchange:function(){
+      //   alert("hy")          --> catch the sheet data and pass it to the back end to save the sheet in database.
+      // },
+      copyCompatibility:true,
+      defaultColWidth:80,
+    });
+function expo(){
+  document.getElementById('demo').jexcel.download()
+}   
+}
+</script>
+{% endblock %}

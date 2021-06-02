@@ -1,0 +1,24 @@
+body{
+    background-image: url('../images/Google-Sheets-Integration.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+input{
+    margin-bottom: 10px;
+}
+#homebutton{
+    background-color: black;
+    color: white;
+}
+#homebutton:hover{
+    background-color: white;
+    color: black;
+}
+#createbutton{
+    background-color: black;
+    color: white;
+}
+#createbutton:hover{
+    background-color: white;
+    color:black;
+}
